@@ -28,6 +28,19 @@ app.get('/', (req, res) => {
     });
 });
 
+app.get('/test', (req, res) => {
+    res.json({ 
+        message: 'Custom Fat Loss India API is running!',
+        status: 'success',
+        timestamp: new Date().toISOString(),
+        endpoints: {
+            root: '/',
+            api: '/api',
+            admin: '/admin'
+        }
+    });
+});
+
 
 mongoose.connect(URL).then(() => {
     console.log("connected with DB!!")
