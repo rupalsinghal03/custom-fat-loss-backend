@@ -14,10 +14,34 @@ dotenv.config();
 const PORT = process.env.PORT || 8000;
 const URL = process.env.MONGOURL;
 
+// Root route for testing
+app.get('/', (req, res) => {
+    res.json({ 
+        message: 'Custom Fat Loss India API is running!',
+        status: 'success',
+        timestamp: new Date().toISOString(),
+        endpoints: {
+            root: '/',
+            api: '/api',
+            admin: '/admin'
+        }
+    });
+});
+
+// Health check endpoint
+app.get('/health', (req, res) => {
+    res.json({ 
+        status: 'healthy',
+        timestamp: new Date().toISOString(),
+        uptime: process.uptime()
+    });
+});
+
 mongoose.connect(URL).then(() => {
     console.log("connected with DB!!")
     app.listen(PORT, () => {
         console.log(`Server is running on PORT: ${PORT}`);
+        console.log(`Test the API at: http://localhost:${PORT}`);
     })
 }).catch(err => console.log(err))
 
