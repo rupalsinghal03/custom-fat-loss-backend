@@ -3,8 +3,8 @@ import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import cors from 'cors';
-import route from '../routes/userRoute.js';
-import adminRoute from '../routes/adminRoute.js';
+import route from './routes/userRoute.js';
+import adminRoute from './routes/adminRoute.js';
 
 const app = express();
 app.use(bodyParser.json());
